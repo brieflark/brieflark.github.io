@@ -24,7 +24,7 @@ button{font-size:1em;padding:10px 18px;border-radius:8px;border:0;background:#1a
 <li>화면 안내대로 단계마다 Enter. 중간에 멈춰도 같은 명령을 다시 붙여 넣으면 이어서 해요.</li>
 </ol>
 <p><button onclick="copyLine('mac',this)">Mac 명령 복사</button><span class="ok" id="mac-ok"></span></p>
-<pre id="mac">__bl_t=$(mktemp -t brieflark-install) &amp;&amp; if curl -fsS -o &quot;$__bl_t&quot; &#x27;https://raw.githubusercontent.com/brieflark/install/06413bbd8de7ffafb842c8abc53ec088b415ff1a/install.sh&#x27;; then { rm -f &quot;$__bl_t&quot;; if [ &quot;$(shasum -a 256 &lt;&amp;4 | cut -c1-64)&quot; = &#x27;c2d552dfbea793cb0db292c838e614ec36c8437493d8c067e021a3374219f96d&#x27; ]; then /bin/bash /dev/fd/3; else echo &#x27;공지와 다른 파일이에요. 아무것도 실행하지 않았어요. 다시 하지 말고 안내한 사람에게 알려 주세요.&#x27; &gt;&amp;2; fi; } 3&lt;&quot;$__bl_t&quot; 4&lt;&quot;$__bl_t&quot;; else rm -f &quot;$__bl_t&quot;; echo &#x27;내려받지 못했어요. 인터넷 연결을 확인하고 같은 한 줄을 다시 붙여넣어 주세요.&#x27; &gt;&amp;2; fi</pre>
+<pre id="mac">__bl_t=$(mktemp -t brieflark-install) &amp;&amp; if [ &quot;$(curl -fsS -w &#x27;%{http_code}&#x27; -o &quot;$__bl_t&quot; &#x27;https://raw.githubusercontent.com/brieflark/install/06413bbd8de7ffafb842c8abc53ec088b415ff1a/install.sh&#x27;)&quot; = 200 ]; then { rm -f &quot;$__bl_t&quot;; if [ &quot;$(shasum -a 256 &lt;&amp;4 | cut -c1-64)&quot; = &#x27;c2d552dfbea793cb0db292c838e614ec36c8437493d8c067e021a3374219f96d&#x27; ]; then /bin/bash /dev/fd/3; else echo &#x27;공지와 다른 파일이에요. 아무것도 실행하지 않았어요. 다시 하지 말고 안내한 사람에게 알려 주세요.&#x27; &gt;&amp;2; fi; } 3&lt;&quot;$__bl_t&quot; 4&lt;&quot;$__bl_t&quot;; else rm -f &quot;$__bl_t&quot;; echo &#x27;내려받지 못했어요. 인터넷 연결을 확인하고 같은 한 줄을 다시 붙여넣어 주세요.&#x27; &gt;&amp;2; fi</pre>
 
 <h2>Windows</h2>
 <ol>
